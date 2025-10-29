@@ -10,7 +10,7 @@ if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir);
 
 const router = express.Router();
 
-const storage = multer.memoryStorage(); // <-- change from diskStorage
+const storage = multer.memoryStorage(); 
 const upload = multer({
   storage,
   limits: { fileSize: 5 * 1024 * 1024 }, // 5 MB limit

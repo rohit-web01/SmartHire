@@ -1,8 +1,8 @@
 export default function CircularScore({ score }) {
   const getColor = (score) => {
-    if (score >= 75) return "#22c55e"; // green
-    if (score >= 50) return "#eab308"; // yellow
-    return "#ef4444"; // red
+    if (score >= 75) return "#22c55e"; 
+    if (score >= 50) return "#eab308"; 
+    return "#ef4444"; 
   };
 
   return (
@@ -23,7 +23,7 @@ export default function CircularScore({ score }) {
           <circle
             stroke={getColor(score)}
             strokeWidth="10"
-            strokeDasharray="377" // 2 * π * 60
+            strokeDasharray="377" 
             strokeDashoffset={377 - (score / 100) * 377}
             strokeLinecap="round"
             fill="transparent"

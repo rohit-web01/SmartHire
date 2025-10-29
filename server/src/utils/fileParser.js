@@ -3,14 +3,13 @@ import { PDFExtract } from "pdf.js-extract";
 import mammoth from "mammoth";
 
 export async function extractText(file) {
-  // If file has buffer (memoryStorage) or path (diskStorage)
   const buffer = file.buffer;
   const filePath = file.path;
   const mimetype = file.mimetype || "";
   const originalName = file.originalname || "";
   const ext = (originalName.split(".").pop() || "").toLowerCase();
 
-  // === PDF ===
+  // PDF
   if (ext === "pdf" || mimetype === "application/pdf") {
     const pdfExtract = new PDFExtract();
 
@@ -37,7 +36,7 @@ export async function extractText(file) {
     }
   }
 
-  // === DOCX ===
+  // DOCX
   if (
     ext === "docx" ||
     mimetype ===
@@ -47,7 +46,7 @@ export async function extractText(file) {
     if (filePath) return (await mammoth.extractRawText({ path: filePath })).value;
   }
 
-  // === TXT ===
+  // TXT
   if (ext === "txt" || mimetype === "text/plain") {
     if (buffer) return buffer.toString("utf-8");
     if (filePath) return fs.readFileSync(filePath, "utf-8");

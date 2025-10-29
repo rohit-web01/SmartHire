@@ -3,7 +3,7 @@ import { analyzeWithGemini } from "../services/geminiService.js";
 
 export const analyzeResume = async (req, res) => {
   try {
-    // ===== Step 1: Extract Resume =====
+    // Extracting text from uploaded files
     let resumeText = "";
     let jdText = "";
   if (!req.files?.resume?.[0]) {
@@ -25,7 +25,7 @@ if (req.files?.jdFile?.[0]) {
       });
     }
 
-    // ===== Step 3: Analyze Using Gemini =====
+    // Analyzing with Gemini model
     const analysisResult = await analyzeWithGemini(resumeText, jdText);
 
     res.json({

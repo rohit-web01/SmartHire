@@ -19,7 +19,7 @@ export default function Loader() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentMsg((prev) => (prev + 1) % messages.length);
-    }, 3000); // change message every 5s
+    }, 3000); // change message every 3s
     return () => clearInterval(interval);
   }, []);
 

@@ -76,7 +76,7 @@ ${jdText}
         throw new Error("No JSON structure found");
       }
     } catch (err) {
-      console.warn("⚠️ Gemini output not valid JSON, returning safe fallback.");
+      console.warn("Gemini output not valid JSON, returning safe fallback.");
       parsedResult = {
         score: null,
         strengths: [],
@@ -89,7 +89,7 @@ ${jdText}
     return parsedResult;
   } catch (error) {
     console.error(
-      "❌ Gemini API Error:",
+      "Gemini API Error:",
       error.response?.data || error.message
     );
 

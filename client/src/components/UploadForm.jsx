@@ -4,6 +4,7 @@ import { toast } from "react-hot-toast";
 import { AiOutlineUpload } from "react-icons/ai";
 
 export default function UploadForm({ onResult, setLoading }) {
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const [resume, setResume] = useState(null);
   const [jdFile, setJdFile] = useState(null);
   const [jdText, setJdText] = useState("");
@@ -22,7 +23,7 @@ export default function UploadForm({ onResult, setLoading }) {
 
     try {
       setLoading(true);
-      const response = await api.post("/analyze/upload", formData, {
+      const response = await api.post(`${BASE_URL}/analyze/upload`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       onResult(response.data.analysis);
@@ -47,7 +48,7 @@ export default function UploadForm({ onResult, setLoading }) {
   return (
     <form
       className="bg-gray-100 shadow-lg rounded-xl p-3 lg:p-6 flex flex-col gap-1 lg:gap-3"
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit} method="POST"
     >
       {/* Resume Upload */}
       <div className="flex flex-col">

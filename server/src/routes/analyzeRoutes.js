@@ -2,6 +2,11 @@ import express from "express";
 import multer from "multer";
 import path from "path";
 import { analyzeResume } from "../controllers/analyzeController.js";
+import fs from "fs";
+
+
+const uploadDir = path.join(process.cwd(), "uploads");
+if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir);
 
 const router = express.Router();
 
